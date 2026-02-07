@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encounter Volt Electricals | Expert Electrical Engineering</title>
+    <style>
+        /* COLOR PALETTE */
+        :root {
+            --sea-blue: #006994;
+            --orange: #FF8C00;
+            --dark-blue: #004d6e;
+            --white: #ffffff;
+            --gray-light: #f4f4f4;
+            --text-dark: #333333;
+        }
+
+        /* BASE STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+        }
+
+        /* NAVIGATION */
+        header {
+            background-color: var(--sea-blue);
+            color: var(--white);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--orange);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--orange);
+        }
+
+        /* HERO SECTION */
+        #home {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 105, 148, 0.8), rgba(0, 77, 110, 0.8)), 
+                        url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            background-color: var(--orange);
+            color: var(--white);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: #e67e00;
+            transform: translateY(-3px);
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 100px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--sea-blue);
+        }
+
+        .underline {
+            width: 80px;
+            height: 4px;
+            background-color: var(--orange);
+            margin: 10px auto;
+        }
+
+        /* CONTENT CARDS */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--gray-light);
+            padding: 30px;
+            border-radius: 10px;
+            border-top: 5px solid var(--orange);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .card h3 {
+            color: var(--sea-blue);
+            margin-bottom: 15px;
+        }
+
+        /* SERVICES */
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .service-item {
+            text-align: center;
+            padding: 30px;
+            background: var(--white);
+            border: 2px solid var(--gray-light);
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .service-item:hover {
+            border-color: var(--orange);
+            background-color: var(--sea-blue);
+            color: white;
+        }
+
+        /* CONTACT FORM */
+        .contact-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form-group textarea {
+            height: 120px;
+        }
+
+        #status {
+            margin-top: 20px;
+            padding: 15px;
+            text-align: center;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .success { background-color: #d4edda; color: #155724; }
+        .error { background-color: #f8d7da; color: #721c24; }
+
+        footer {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.2rem; }
+            nav ul { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Encounter Volt</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#vision-mission">Vision/Mission</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <div class="hero-content">
+            <h1>Encounter Volt Electricals</h1>
+            <p>High-Voltage Expertise. Precision Engineering. Guaranteed Safety.</p><br>
+            <a href="#contact" class="btn">Start Your Project</a>
+        </div>
+    </section>
+
+    <!-- ABOUT PAGE -->
+    <section id="about">
+        <div class="section-title">
+            <h2>About Us</h2>
+            <div class="underline"></div>
+        </div>
+        <p style="text-align:center; max-width: 800px; margin: 0 auto 40px;">
+            At Encounter Volt Electricals, we are
+committed to delivering reliable and
+high-quality electrical solutions for
+ homes , businesses, etc. We pride
+ourselves on efficiency, completed on
+time and to the highest standard. We
+are the members are certified electrical
+engineers awarded by the Energy
+Commission of Ghana.
+        </p>
+    </section>
+
+    <!-- VISION & MISSION PAGE -->
+    <section id="vision-mission" style="background-color: var(--gray-light);">
+        <div class="section-title">
+            <h2>Vision & Mission</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="content-grid">
+            <div class="card">
+                <h3>Our Vision</h3>
+                <p>   To be the most trusted electrical services provider, lighting the way with excellence and innovation</p>
+            </div>
+            <div class="card">
+                <h3>Our Mission</h3>
+                <p>  
+Powering your home and business with safe, reliable, and efficient electrical solutions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES PAGE -->
+    <section id="services">
+        <div class="section-title">
+            <h2>Our Services</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="services-container">
+            <div class="service-item">
+                <h3> House wiring & Rewiring </h3>
+                <p></p>
+            </div>
+            <div class="service-item">
+                <h3>Lighting & Switch Installation</h3>
+                <p></p>
+            </div>
+            <div class="service-item">
+                <h3>Ceiling fan & Socket Installation </h3>
+                <p></p>
+            </div>
+            <div class="service-item">
+                <h3>Distribution Board setup</h3>
+                <p></p>
+            </div>
+<div class="service-item">
+                <h3> Extension of existing circuit </h3>
+                <p></p>
+            </div>
+
+<div class="service-item">
+                <h3> Electrical fault detection and repairs </h3>
+                <p></p>
+            </div>
+
+<div class="service-item">
+                <h3> Earthing and surge protection</h3>
+                <p></p>
+            </div>
+
+<div class="service-item">
+                <h3> Fire alarm and smoke detector installation. </h3>
+                <p></p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION (THE MESSAGE PORTION) -->
+    <section id="contact" style="background-color: var(--gray-light);">
+        <div class="section-title">
+            <h2>Send A Message</h2>
+            <div class="underline"></div>
+            <p>Messages go directly to our engineering team.</p>
+        </div>
+        
+        <div class="contact-container">
+            <!-- UPDATE THE ACTION URL BELOW WITH YOUR FORMSPREE ID -->
+            <form id="my-form" action="https://formspree.io/f/PASTE_YOUR_ID_HERE" method="POST">
+                <div class="form-group">
+                    <label>Your Name:</label>
+                    <input type="text" name="name" required placeholder="John Smith">
+                </div>
+                <div class="form-group">
+                    <label>Email Address:</label>
+                    <input type="email" name="email" required placeholder="john@company.com">
+                </div>
+                <div class="form-group">
+                    <label>Subject:</label>
+                    <input type="text" name="subject" placeholder="Project Consultation">
+                </div>
+                <div class="form-group">
+                    <label>Message:</label>
+                    <textarea name="message" required placeholder="Tell us about your electrical requirements..."></textarea>
+                </div>
+                <button id="my-form-button" class="btn" style="width: 100%;">Submit Message</button>
+                <div id="status"></div>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Encounter Volt Electricals |  Powering your world the right way</p>
+    </footer>
+
+    <!-- JAVASCRIPT FOR EMAIL HANDLING -->
+    <script>
+        var form = document.getElementById("my-form");
+        
+        async function handleSubmit(event) {
+          event.preventDefault();
+          var status = document.getElementById("status");
+          var data = new FormData(event.target);
+          
+          // Check if placeholder is still there
+          if(form.action.includes("PASTE_YOUR_ID_HERE")) {
+              status.innerHTML = "Error: You need to paste your Formspree ID in the code!";
+              status.className = "error";
+              status.style.display = "block";
+              return;
+          }
+
+          fetch(event.target.action, {
+            method: form.method,
+            body: data,
+            headers: {
+                'Accept': 'application/json'
+            }
+          }).then(response => {
+            if (response.ok) {
+              status.innerHTML = "Message Sent Successfully! We will contact you shortly.";
+              status.className = "success";
+              status.style.display = "block";
+              form.reset();
+            } else {
+              response.json().then(data => {
+                if (Object.hasOwn(data, 'errors')) {
+                  status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
+                } else {
+                  status.innerHTML = "Oops! There was a problem submitting your form";
+                }
+              })
+            }
+          }).catch(error => {
+            status.innerHTML = "Oops! There was a problem submitting your form";
+            status.className = "error";
+            status.style.display = "block";
+          });
+        }
+        form.addEventListener("submit", handleSubmit)
+    </script>
+
+</body>
+</html>
