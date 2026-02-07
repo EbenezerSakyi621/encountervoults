@@ -54,7 +54,7 @@
         header{
             position:fixed;
             width:100%;
-            top:0;
+            top:50px;
             display:flex;
             justify-content:space-between;
             align-items:center;
@@ -361,6 +361,11 @@
 </head>
 <body>
 
+<!-- Valentine's Floating Header -->
+<div id="valBanner" style="position:fixed; top:0; width:100%; height:50px; display:flex; align-items:center; justify-content:center; background:linear-gradient(90deg,#ff4d6d,#ff758f); color:white; font-weight:600; z-index:2000;">
+    ❤️ Love Month Special! Enjoy fast, safe, and reliable electrical services for your home and loved ones.
+</div>
+
 <header id="header">
     <div class="logo">ENCOUNTER VOLT</div>
 
@@ -441,7 +446,7 @@
 
     <div class="grid">
         <div class="card testimonial">
-            <div class="stars">★★★★</div>
+            <div class="stars">★★★★★</div>
             <p>"Encounter Volt rewired our entire home flawlessly. Professional, fast, and very affordable."</p>
             <strong>- Kwame Mensah</strong>
         </div>
@@ -469,7 +474,7 @@
 </section>
 
 <footer>
-    © 2026 Encounter Volt Electricals | Premium Electrical Solutions<br><br>
+    © 2025 Encounter Volt Electricals | Premium Electrical Solutions<br><br>
     Website developed by 
     <a href="https://skycreatives.vercel.app/" target="_blank" style="color:#FF8C00; text-decoration:none; font-weight:600;">
         Sky Creatives
@@ -517,8 +522,19 @@ setTimeout(()=>{
 function closePopup(){
     document.getElementById('popup').style.display='none';
 }
+
+// Valentine Banner Auto Remove After Feb 15, 2026
+(function(){
+    const banner=document.getElementById('valBanner');
+    const expiry=new Date('2026-02-15T23:59:59');
+    const now=new Date();
+
+    if(now>expiry && banner){
+        banner.style.display='none';
+        document.querySelector('header').style.top='0';
+    }
+})();
 </script>
 
 </body>
 </html>
-
