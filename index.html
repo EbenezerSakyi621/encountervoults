@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Encounter Volt Electricals | Premium Electrical Engineering</title>
 
+    <!-- Website Icon / Favicon -->
+    <link rel="icon" type="image/png" src="icon.png">
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
@@ -224,10 +227,14 @@
             right:25px;
             background:#25D366;
             color:white;
-            padding:16px 20px;
-            border-radius:50px;
+            width:60px;
+            height:60px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            border-radius:50%;
             text-decoration:none;
-            font-weight:600;
+            font-size:26px;
             box-shadow:0 10px 25px rgba(0,0,0,.25);
             animation:pulse 1.8s infinite;
             z-index:999;
@@ -294,6 +301,21 @@
 
         @media(max-width:480px){
             .hero h1{font-size:1.9rem;}
+            .grid{grid-template-columns:1fr;}
+            section{padding:80px 5%;}
+            .popup{padding:30px;margin:15px;}
+            
+            /* Round WhatsApp button for mobile */
+            .whatsapp{
+                width:48px;
+                height:48px;
+                font-size:20px;
+                bottom:14px;
+                right:14px;
+                border-radius:50%;
+                padding:0;
+            }
+        }
             .grid{grid-template-columns:1fr;}
             section{padding:80px 5%;}
             .popup{padding:30px;margin:15px;}
@@ -420,7 +442,7 @@
 
 <button class="top-btn" id="topBtn">↑</button>
 
-<a href="https://wa.me/233500668444?text=Hello%20Encounter%20Volt,%20I%20need%20electrical%20services." class="whatsapp" target="_blank">💬 WhatsApp</a>
+<a href="https://wa.me/233500668444?text=Hello%20Encounter%20Volt,%20I%20need%20electrical%20services." class="whatsapp" target="_blank" aria-label="Chat on WhatsApp">💬</a>
 
 <div class="overlay" id="popup">
     <div class="popup">
