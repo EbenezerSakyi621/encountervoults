@@ -128,23 +128,34 @@ h1{
 
 </div>
 
-<script>
 
-// 5 Days Countdown
-const deadline = new Date().getTime() + (5 * 24 * 60 * 60 * 1000);
+<script>
+let deadline;
+
+// Check if deadline already exists
+if (localStorage.getItem("countdownDeadline")) {
+    deadline = parseInt(localStorage.getItem("countdownDeadline"));
+} else {
+    // Set new deadline only once (5 days from first visit)
+    deadline = new Date().getTime() + (5 * 24 * 60 * 60 * 1000);
+    localStorage.setItem("countdownDeadline", deadline);
+}
 
 const timer = setInterval(() => {
 
     const now = new Date().getTime();
     const distance = deadline - now;
 
-    if(distance < 0){
+    if (distance < 0) {
         clearInterval(timer);
 
         document.querySelector('.countdown').style.display = 'none';
 
         document.getElementById('expired').innerHTML =
-        '<div class="expired">⛔ Website Access Expired!</div>';
+            '<div class="expired">⛔ Website Access Expired!</div>';
+
+        // optional: remove stored deadline
+        localStorage.removeItem("countdownDeadline");
 
         return;
     }
@@ -160,7 +171,6 @@ const timer = setInterval(() => {
     document.getElementById('seconds').innerHTML = seconds;
 
 }, 1000);
-
 </script>
 
 </body>
